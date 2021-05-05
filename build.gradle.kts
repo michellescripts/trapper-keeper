@@ -28,6 +28,7 @@ dependencies {
 
     runtimeOnly("org.postgresql:postgresql:42.2.16")
 
+    testImplementation("io.mockk:mockk:1.10.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -32,3 +32,11 @@ data class NoteEntity(
     @Column(updatable = false, nullable = false)
     lateinit var createdAt: Instant
 }
+
+fun NoteEntity.toNote() = Note(
+    id = id,
+    title = title,
+    data = data,
+    type = type,
+    pinned = pinned,
+)
