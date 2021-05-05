@@ -13,9 +13,11 @@ class NoteScenario {
     fun forNote(
         note: Note,
         type: NoteType,
+        data: String,
     ) = apply {
         this.note = note.copy(
             type = type,
+            data = data,
         )
     }
 

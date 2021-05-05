@@ -13,14 +13,14 @@ class SeedNoteScenarios(
             NoteType.BLOB,
         ).map { type ->
             listOf(
-                3 to NoteScenario()
-                    .forNote(note = seedNotes.defaultNote, type = type),
-                1 to NoteScenario()
-                    .forNote(note = seedNotes.defaultNote, type = type),
-                2 to NoteScenario()
-                    .forNote(note = seedNotes.defaultNote, type = type),
-                1 to NoteScenario()
-                    .forNote(note = seedNotes.defaultNote, type = type),
+                5 to NoteScenario()
+                    .forNote(note = seedNotes.defaultNote, type = type, data="euismod elementum nisi quis"),
+                5 to NoteScenario()
+                    .forNote(note = seedNotes.defaultNote, type = type, data="eleifend quam adipiscing at"),
+                5 to NoteScenario()
+                    .forNote(note = seedNotes.defaultNote, type = type, data="in tellus integer faucibus"),
+                5 to NoteScenario()
+                    .forNote(note = seedNotes.defaultNote, type = type, data="turpis in eu mi"),
             )
         }.flatten()
     )

@@ -10,7 +10,7 @@ internal class NoteScenarioTest {
 
     private fun baseNoteScenario(): NoteScenario = NoteScenario()
         .title("title")
-        .forNote(make(), NoteType.BLOB)
+        .forNote(make(), NoteType.BLOB, "some-data")
 
     @Test
     fun `static properties are passed to the assigned note scenario`() {
@@ -28,7 +28,7 @@ internal class NoteScenarioTest {
             "title required",
             org.junit.jupiter.api.assertThrows<Exception> {
                 NoteScenario()
-                    .forNote(make<Note>(), NoteType.BLOB)
+                    .forNote(make<Note>(), NoteType.BLOB, "some-data")
                     .assign()
             }.message
         )
