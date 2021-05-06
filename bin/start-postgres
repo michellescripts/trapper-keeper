@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+pushd ${PROJECT_DIR}
+    docker create \
+      --name keeperdb \
+      --env POSTGRES_PASSWORD=password \
+      --rm \
+      -p 5433:5432 \
+       postgres:10
+
+    docker cp ./sql/create_db.sql keeperdb:/docker-entrypoint-initdb.d/
+    docker start keeperdb -a
+popd

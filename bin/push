@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -xe
+
+pushd ${PROJECT_DIR}
+  git pull -r
+popd
+
+pushd ${PROJECT_DIR}/ui
+    npm run-script test
+popd
+
+pushd ${PROJECT_DIR}
+    ./gradlew clean
+    ./gradlew test
+    git push
+popd
