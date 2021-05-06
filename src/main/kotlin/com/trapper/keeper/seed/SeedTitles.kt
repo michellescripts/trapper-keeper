@@ -25,5 +25,10 @@ class SeedTitles {
         "imperdiet nulla malesuada",
         "pellentesque massa tincidunt",
         "nunc pulvinar sapien",
+        "ultricies mi maecenas",
+        "mauris pharetra eget",
+        "mi tempus ultrices",
+        "nulla malesuada imperdiet",
+        "massa tincidunt pellentesque",
     )
 }

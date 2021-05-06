@@ -6,20 +6,18 @@ my favorite code patterns, helpers, implementation details, etc.
 
 ### scripts
 - [x] push
+- [x] start-postgres
 
 ## kotlin
 
 ### patterns
 - [x] maker
+- [x] seed/clean
 
-#### maker
-- the intention is to set up fake-data for tests quickly, and to only set the fields you care about for testing >> this leads to slimmer test implementation, with a focus on the test subject
-- see `keeper/src/test/kotlin/com/trapper/keeper/testmakers/make.kt` for implementation
-- search `keeper/src/test/kotlin/com/trapper/keeper` with `make<` for usage examples
+## react
 
-## seed
-Seed by generating data for your application utilizing data at runtime and compile time (builder)
-
-#### patterns
-- [x] seed: populate data
-- [x] clean: delete all data
+### patterns
+- [x] maker
+- [x] API setup (context & client)
+- [x] hooks
+- [x] react-jss (globals, styleguide, page layout)

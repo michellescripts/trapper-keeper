@@ -4,6 +4,7 @@ import {NoteApiProvider} from './API/NoteApiContext'
 
 function App() {
     return <NoteApiProvider>
+        <h1>Trapper Keeper: Keep</h1>
         <Notes/>
     </NoteApiProvider>
 }
