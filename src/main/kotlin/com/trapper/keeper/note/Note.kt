@@ -12,6 +12,7 @@ data class Note(
 
 enum class NoteType {
     BLOB,
+    CHECK,
 }
 
 fun Note.toNoteEntity() = NoteEntity(

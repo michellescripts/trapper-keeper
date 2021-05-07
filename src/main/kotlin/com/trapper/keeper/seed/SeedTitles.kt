@@ -4,6 +4,12 @@ import org.springframework.stereotype.Component
 
 @Component
 class SeedTitles {
+    // In this example codebase, TITLES represents the amount of data
+    // that will be seeded into the application.
+    // Scenarios will be randomly assigned to titles until all titles have data.
+    // Use this to throttle your seeding of data,
+    // or to seed different data based on needs (ex: environment, user, date, etc)
+    // *also helpful for fields that need to be unique
     val TITLES: List<String> = listOf(
         "lorem ipsum dolor",
         "sit amet consectetur",
@@ -25,10 +31,5 @@ class SeedTitles {
         "imperdiet nulla malesuada",
         "pellentesque massa tincidunt",
         "nunc pulvinar sapien",
-        "ultricies mi maecenas",
-        "mauris pharetra eget",
-        "mi tempus ultrices",
-        "nulla malesuada imperdiet",
-        "massa tincidunt pellentesque",
     )
 }
