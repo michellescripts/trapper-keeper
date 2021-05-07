@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -xe
+
+
+pushd ${PROJECT_DIR}/ui
+    npm run-script test
+popd
+#
+#pushd ${PROJECT_DIR}/e2e
+#    yarn run cypress run --quiet
+#popd
+
+pushd ${PROJECT_DIR}
+    ./gradlew clean
+    ./gradlew test
+popd

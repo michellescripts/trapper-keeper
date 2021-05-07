@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -xe
+
+
+pushd ${PROJECT_DIR}/ui
+    yarn start
+popd

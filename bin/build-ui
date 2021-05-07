@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -xe
+
+
+pushd ${PROJECT_DIR}/ui
+    yarn install
+    npx tsc
+    npx react-scripts build
+popd

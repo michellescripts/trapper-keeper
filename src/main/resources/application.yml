@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/keeperdb
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5433}/keeperdb
     username: keeperuser
     password: password
   jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect

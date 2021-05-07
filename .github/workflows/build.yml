@@ -1,0 +1,79 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      - name: Use direnv
+        uses: HatsuneMiku3939/direnv-action@v1
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Create DB
+        run: psql -U postgres -f ./sql/create_db.sql -p 5432 -h localhost
+        env:
+          PGPASSWORD: postgres
+
+      - name: Build UI
+        run: ./bin/build-ui
+
+      - name: Build API
+        run: ./gradlew build
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_PASSWORD: postgres
+
+#      - name: install E2E
+#        uses: cypress-io/github-action@v2
+#        with:
+#          runTests: false
+#          working-directory: e2e
+
+#      - name: run E2E
+#        uses: cypress-io/github-action@v2
+#        with:
+#          start: yarn run start
+#          working-directory: ui
+#          wait-on: 'http://localhost:3000'
+
+      - name: Test
+        run: ./bin/test
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432
+          POSTGRES_PASSWORD: postgres
