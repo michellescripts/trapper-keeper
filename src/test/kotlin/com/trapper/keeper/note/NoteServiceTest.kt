@@ -13,16 +13,29 @@ internal class NoteServiceTest {
     private val subject = NoteService(noteRepository)
 
     @Test
-    fun `getNotes should return a list of notes`() {
-        val note = make<Note>()
+    fun `getNotes should return a list of not deleted notes`() {
+        val note = make<Note>().copy(deleted = false)
         val noteEntity = note.toNoteEntity()
 
-        every { noteRepository.findAll() } returns listOf(noteEntity)
+        every { noteRepository.findAllByDeletedIsFalse() } returns listOf(noteEntity)
         val result = subject.getNotes()
 
         val expected = listOf(note)
         assertThat(result).isEqualTo(expected)
-        verify { noteRepository.findAll() }
+        verify { noteRepository.findAllByDeletedIsFalse() }
+    }
+
+    @Test
+    fun `getNotesDeleted should return a list of deleted notes`() {
+        val note = make<Note>().copy(deleted = true)
+        val noteEntity = note.toNoteEntity()
+
+        every { noteRepository.findAllByDeletedIsTrue() } returns listOf(noteEntity)
+        val result = subject.getNotesDeleted()
+
+        val expected = listOf(note)
+        assertThat(result).isEqualTo(expected)
+        verify { noteRepository.findAllByDeletedIsTrue() }
     }
 
     @Test

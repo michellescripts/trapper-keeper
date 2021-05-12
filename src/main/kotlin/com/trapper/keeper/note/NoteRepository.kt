@@ -5,4 +5,7 @@ import org.springframework.stereotype.Repository
 import java.util.UUID
 
 @Repository
-interface NoteRepository : JpaRepository<NoteEntity, UUID>
+interface NoteRepository : JpaRepository<NoteEntity, UUID> {
+    fun findAllByDeletedIsTrue(): List<NoteEntity>
+    fun findAllByDeletedIsFalse(): List<NoteEntity>
+}

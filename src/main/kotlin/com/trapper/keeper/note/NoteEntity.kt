@@ -26,6 +26,9 @@ data class NoteEntity(
 
     @Column
     val pinned: Boolean = false,
+
+    @Column
+    val deleted: Boolean = false,
 ) {
     @CreatedDate
     @CreationTimestamp
@@ -39,4 +42,5 @@ fun NoteEntity.toNote() = Note(
     data = data,
     type = type,
     pinned = pinned,
+    deleted = deleted,
 )

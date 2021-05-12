@@ -7,11 +7,14 @@ import java.util.UUID
 
 @Component
 class SeedNotes {
-    val defaultNote: Note = Note(
+    final val defaultNote: Note = Note(
         id = UUID.fromString("00000000-0000-0000-0000-000000000000"),
         title = "",
         data = "",
         type = NoteType.BLOB,
-        pinned = false
+        pinned = false,
+        deleted = false,
     )
+
+    val deletedNote: Note = defaultNote.copy(deleted = true)
 }

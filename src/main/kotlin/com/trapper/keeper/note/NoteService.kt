@@ -9,7 +9,10 @@ class NoteService(
     private val noteRepository: NoteRepository,
 ) {
     fun getNotes(): List<Note> =
-        noteRepository.findAll().map { ne -> ne.toNote() }.toList()
+        noteRepository.findAllByDeletedIsFalse().map { ne -> ne.toNote() }.toList()
+
+    fun getNotesDeleted(): List<Note> =
+        noteRepository.findAllByDeletedIsTrue().map { ne -> ne.toNote() }.toList()
 
     fun seed(assignedNotes: AssignedNoteScenarios): List<UUID?> =
         noteRepository.saveAll(assignedNotes.notes.map { n -> n.toNoteEntity() })

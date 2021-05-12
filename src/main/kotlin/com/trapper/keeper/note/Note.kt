@@ -8,6 +8,7 @@ data class Note(
     val data: String,
     val type: NoteType,
     val pinned: Boolean,
+    val deleted: Boolean,
 )
 
 enum class NoteType {
@@ -21,4 +22,5 @@ fun Note.toNoteEntity() = NoteEntity(
     data = data,
     type = type,
     pinned = pinned,
+    deleted = deleted,
 )
