@@ -1,12 +1,19 @@
 import React from 'react'
-import {Notes} from './note/Notes'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import {NoteApiProvider} from './api/NoteApiContext'
+import {GlobalRouteBasedComponents} from './routes/GlobalRouteBasedComponents'
 
-function App() {
+const App: React.FC = () => {
     return <NoteApiProvider>
-        <h1>Trapper Keeper: Keep</h1>
-        <Notes/>
+        <Router>
+            <Route
+                path="*"
+                render={(routeProps): React.ReactNode =>
+                    <GlobalRouteBasedComponents route={routeProps.location.pathname}/>
+                }
+            />
+        </Router>
     </NoteApiProvider>
 }
 
-export default App
+export {App}
