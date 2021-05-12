@@ -1,5 +1,5 @@
-import {NoteApi} from '../../API/NoteApi'
-import * as NoteApiContext from '../../API/NoteApiContext'
+import {NoteApi} from '../../api/NoteApi'
+import * as NoteApiContext from '../../api/NoteApiContext'
 
 export const mockNoteApiWith = (client: NoteApi): jest.SpyInstance => {
     const hookSpy = jest.spyOn(NoteApiContext, 'useNoteApi')

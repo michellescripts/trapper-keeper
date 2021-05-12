@@ -1,6 +1,6 @@
 import React from 'react'
-import {Notes} from './Note/Notes'
-import {NoteApiProvider} from './API/NoteApiContext'
+import {Notes} from './note/Notes'
+import {NoteApiProvider} from './api/NoteApiContext'
 
 function App() {
     return <NoteApiProvider>

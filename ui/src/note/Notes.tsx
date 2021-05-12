@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useNoteApi} from '../API/NoteApiContext'
+import {useNoteApi} from '../api/NoteApiContext'
 import {Note} from './Note'
 import {NoteCard} from './NoteCard'
 import {useNotesStyles} from './Notes.styles'

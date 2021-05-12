@@ -1,6 +1,6 @@
 import React from "react"
 import {NoteCard, NoteCardProps} from './NoteCard'
-import {makeNote} from '../Makers/makeNote'
+import {makeNote} from '../makers/makeNote'
 import {render, screen} from '@testing-library/react'
 
 describe("NoteCard", () => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Notes} from './Notes'
-import {makeNoteApi} from '../Makers/makeNoteApi'
-import {makeNoteResponse} from '../Makers/makeNoteResponse'
-import {makeNote} from '../Makers/makeNote'
+import {makeNoteApi} from '../makers/makeNoteApi'
+import {makeNoteResponse} from '../makers/makeNoteResponse'
+import {makeNote} from '../makers/makeNote'
 import {render, screen, waitFor} from '@testing-library/react'
 import {mockNoteApiWith} from '../testHelpers/spies/mockNoteApiWith'
 

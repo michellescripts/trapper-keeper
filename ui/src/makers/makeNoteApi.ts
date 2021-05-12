@@ -1,4 +1,4 @@
-import {NoteApi} from '../API/NoteApi'
+import {NoteApi} from '../api/NoteApi'
 import {Made} from './Made'
 
 export const makeNoteApi = (overrides: Partial<NoteApi> = {}): Made<NoteApi> => {

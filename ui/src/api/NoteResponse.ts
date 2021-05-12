@@ -1,4 +1,4 @@
-import {Note} from '../Note/Note'
+import {Note} from '../note/Note'
 
 export interface NoteResponse {
     notes: Note[]
