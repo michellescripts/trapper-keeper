@@ -16,7 +16,7 @@ describe('GlobalRouteBasedComponents', () => {
             shouldRenderNav: true,
         },
         {
-            route: '/assessment',
+            route: '/trash',
             shouldRenderNav: true,
         },
         {

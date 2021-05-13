@@ -3,7 +3,7 @@ import {Made} from './Made'
 
 export const makeNoteApi = (overrides: Partial<NoteApi> = {}): Made<NoteApi> => {
     return Object.assign({
-        getNotes: () => new Promise(() => {}),
-        getNotesDeleted: () => new Promise(() => {}),
+        getNotes: jest.fn(),
+        getNotesDeleted: jest.fn(),
     }, overrides)
 }

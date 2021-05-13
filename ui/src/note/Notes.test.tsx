@@ -1,34 +1,27 @@
 import React from 'react'
-import {Notes} from './Notes'
-import {makeNoteApi} from '../makers/makeNoteApi'
-import {makeNoteResponse} from '../makers/makeNoteResponse'
+import {Notes, NotesProps} from './Notes'
 import {makeNote} from '../makers/makeNote'
-import {render, screen, waitFor} from '@testing-library/react'
-import {mockNoteApiWith} from '../testHelpers/spies/mockNoteApiWith'
+import {render, screen} from '@testing-library/react'
 
 describe('Notes', () => {
+    let props: NotesProps
+
+    beforeEach(() => {
+        props = {notes: []}
+    })
+
     it('displays the note data', async () => {
-        const notePromise = Promise.resolve(makeNoteResponse({
-            notes: [
-                makeNote({
-                    title: 'some-title',
-                }),
-                makeNote({
-                    title: 'some-other-title',
-                }),
-            ],
-        }))
+        props.notes = [
+            makeNote({
+                title: 'some-title',
+            }),
+            makeNote({
+                title: 'some-other-title',
+            }),
+        ]
 
-        mockNoteApiWith(makeNoteApi({
-            getNotes: () => notePromise,
-        }))
+        const subject = render(<Notes {...props}/>)
 
-        const subject = render(<Notes/>)
-
-        expect(screen.queryByTestId('loading-indicator')).toBeTruthy()
-        expect(screen.queryByTestId('notes')).toBeFalsy()
-
-        await waitFor(() => expect(screen.queryByTestId('loading-indicator')).toBeFalsy())
         expect(screen.getByTestId('notes')).toBeTruthy()
         expect(subject.getByText('some-title')).toBeTruthy()
         expect(subject.getByText('some-other-title')).toBeTruthy()
