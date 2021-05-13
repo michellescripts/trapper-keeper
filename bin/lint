@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -xe
+
+
+pushd ${PROJECT_DIR}/ui
+    CI=true npm run-script lint --silent
+popd
