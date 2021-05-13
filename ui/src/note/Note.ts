@@ -4,6 +4,7 @@ export interface Note {
     data: string,
     type: NoteType,
     pinned: Boolean,
+    deleted: Boolean,
 }
 
 export enum NoteType {

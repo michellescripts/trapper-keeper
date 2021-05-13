@@ -8,5 +8,6 @@ export const makeNote = (overrides: Partial<Note> = {}): Made<Note> => {
         data: 'String',
         type: NoteType.BLOB,
         pinned: false,
+        deleted: false,
     }, overrides)
 }

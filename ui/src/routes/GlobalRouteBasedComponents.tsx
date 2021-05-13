@@ -9,7 +9,7 @@ export interface GlobalRouteBasedComponentsProps {
 
 export enum NavSection {
     NOTES = 'notes',
-    ASSESSMENT = 'assessment',
+    TRASH = 'trash',
 }
 
 interface RouteInfo {
@@ -21,7 +21,7 @@ export const GlobalRouteBasedComponents: React.FC<GlobalRouteBasedComponentsProp
 
     const routes: Array<RouteInfo> = [
         {pattern: /^\/$/i, section: NavSection.NOTES},
-        {pattern: /^\/assessment$/i, section: NavSection.ASSESSMENT},
+        {pattern: /^\/trash$/i, section: NavSection.TRASH},
     ]
 
     const matchedRoute: RouteInfo | undefined = routes.filter(r => r.pattern.test(props.route))[0]
@@ -30,8 +30,8 @@ export const GlobalRouteBasedComponents: React.FC<GlobalRouteBasedComponentsProp
         return <RouteNotFoundError/>
     }
 
-    return <div>
+    return <>
         <NavBar currentPage={matchedRoute.section}/>
         <Routes/>
-    </div>
+    </>
 }

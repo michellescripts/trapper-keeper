@@ -1,5 +1,5 @@
 export enum AppRoute {
-    ASSESSMENT = "/assessment",
+    TRASH = "/trash",
     NOT_FOUND = "/404",
     ROOT = "/",
 }
