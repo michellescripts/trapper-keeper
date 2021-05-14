@@ -1,7 +1,7 @@
 import React from 'react'
 import {GlobalRouteBasedComponents} from './GlobalRouteBasedComponents'
 import {BrowserRouter as Router} from 'react-router-dom'
-import {render} from '@testing-library/react'
+import {render, waitFor} from '@testing-library/react'
 import {NoteApiProvider} from '../api/NoteApiContext'
 
 describe('GlobalRouteBasedComponents', () => {
@@ -28,7 +28,10 @@ describe('GlobalRouteBasedComponents', () => {
     describe('nav bar', () => {
         testCases.forEach(testCase => {
             if (testCase.shouldRenderNav) {
-                it(`should be visible on the route "${testCase.route}"`, () => {
+                it(`should be visible on the route "${testCase.route}"`, async () => {
+                    // hides down-the-chain data-loader errors when rendering
+                    const spy = jest.spyOn(global.console, 'error').mockImplementation(jest.fn())
+
                     const subject = render(
                         <NoteApiProvider>
                             <Router>
@@ -36,7 +39,10 @@ describe('GlobalRouteBasedComponents', () => {
                             </Router>
                         </NoteApiProvider>
                     )
-                    expect(subject.queryByTestId('navigation')).toBeInTheDocument()
+                    await waitFor(() => expect(subject.getByTestId('navigation')).toBeTruthy())
+                    await waitFor(() => expect(console.error).toBeCalled())
+
+                    spy.mockRestore()
                 })
             } else {
                 it(`should not be visible on the route "${testCase.route}"`, () => {
@@ -47,7 +53,7 @@ describe('GlobalRouteBasedComponents', () => {
                             </Router>
                         </NoteApiProvider>
                     )
-                    expect(subject.queryByTestId('navigation')).not.toBeInTheDocument()
+                    expect(subject.queryByTestId('navigation')).toBeFalsy()
                 })
             }
         })
@@ -62,7 +68,7 @@ describe('GlobalRouteBasedComponents', () => {
                     </Router>
                 </NoteApiProvider>
             )
-            expect(subject.queryByTestId('not-found')).toBeInTheDocument()
+            expect(subject.getByTestId('not-found')).toBeTruthy()
         })
     })
 })
