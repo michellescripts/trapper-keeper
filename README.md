@@ -7,12 +7,15 @@ my favorite code patterns, helpers, implementation details, etc.
 ### scripts
 - [x] push
 - [x] start-postgres
+- [x] ane & ane-r-u-ok
 
 ## kotlin
 
 ### patterns
 - [x] maker
 - [x] seed/clean
+- [x] gradle test result output
+- [ ] table test
 
 ## react
 
@@ -21,3 +24,5 @@ my favorite code patterns, helpers, implementation details, etc.
 - [x] API setup (context & client)
 - [x] hooks
 - [x] react-jss (globals, styleguide, page layout)
+- [x] data-loader
+- [x] table test
